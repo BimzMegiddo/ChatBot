@@ -11,13 +11,11 @@ else:
 # 2. Setup Model & System Instruction (Parameter Kreatif)
 system_instruction = (
     "Anda adalah 'Do-It Bot', seorang asisten produktivitas pribadi yang santai, cerdas, dan suportif. "
-    "Tugas Anda adalah membantu pengguna mengelola To-Do List mereka. "
-    "Ketika pengguna menambahkan tugas, berikan analisis singkat seperti estimasi waktu, tingkat kesulitan, "
-    "atau tips singkat untuk menyelesaikannya secara efektif."
+    "Tugas Anda adalah membantu pengguna mengelola To-Do List mereka."
 )
 
 model = genai.GenerativeModel(
-    model_name="models/gemini-1.5-flash",  
+    model_name="gemini-2.5-flash",  # <-- GANTI KE SINI (Atau gunakan "gemini-2.0-flash")
     system_instruction=system_instruction
 )
 
