@@ -1,10 +1,12 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 1. Konfigurasi API Key Gemini
-# Pastikan kamu sudah setup API Key di environment variable atau Streamlit secrets
-GOOGLE_API_KEY = "AQ.Ab8RN6LUp4IJJcgGCWzhkrQukp_AixoxpH75us5Qp5fMFeErWA"
-genai.configure(api_key=GOOGLE_API_KEY)
+# Mengambil API Key secara aman dari Streamlit Secrets
+if "GEMINI_API_KEY" in st.secrets:
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+else:
+    st.error("Aplikasi gagal berjalan: API Key tidak ditemukan di Streamlit Secrets!")
+    st.stop()
 
 # 2. Setup Model & System Instruction (Parameter Kreatif)
 system_instruction = (
@@ -25,7 +27,6 @@ if "todo_list" not in st.session_state:
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# --- TAMPILAN UI ---
 st.set_page_config(page_title="Do-It Bot: AI Productivity Assistant", layout="wide")
 st.title("🤖 Do-It Bot: Personal To-Do & AI Assistant")
 st.write("Kelola tugasmu dan dapatkan insights cerdas dari AI untuk menyelesaikannya!")
