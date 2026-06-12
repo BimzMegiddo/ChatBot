@@ -32,7 +32,7 @@ with col1:
     st.header("📝 Daftar Tugasmu")
     
     new_task = st.text_input("Tambah tugas baru baru di sini:", placeholder="Misal: Belajar materi presentasi Machine Learning")
-   if st.button("Tambah Tugas"):
+    if st.button("Tambah Tugas"):
         if new_task:
             st.session_state.todo_list.append({"task": new_task, "status": "Belum Selesai"})
             st.success(f"Tugas '{new_task}' berhasil ditambahkan!")
